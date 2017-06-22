@@ -6,12 +6,21 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 /**
  * Created by minhl on 22/06/2017.
  */
 
 public class FragmentOne extends Fragment {
+    MainActivity mainActivity;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mainActivity = (MainActivity) getActivity();
+        Toast.makeText(mainActivity, "Khoi tao Fragment", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -20,5 +29,11 @@ public class FragmentOne extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(
                 R.layout.fragment_one, container, false);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Toast.makeText(mainActivity, "Xoa Fragment", Toast.LENGTH_SHORT).show();
     }
 }

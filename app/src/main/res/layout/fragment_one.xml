@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        android:text="This is fragment No.1"
+        android:text="@string/dep_trai_co_gi_sai"
         android:textStyle="bold" />
 
 </LinearLayout>
