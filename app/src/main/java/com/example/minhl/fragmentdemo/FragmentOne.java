@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 /**
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 public class FragmentOne extends Fragment {
     MainActivity mainActivity;
+    private OnCustomListenner onCustomListenner;
 
     @Override
     public void onStart() {
@@ -25,10 +27,20 @@ public class FragmentOne extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_one, container, false);
+        Button button = (Button) view.findViewById(R.id.btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setCustomEvent(mainActivity);
+            }
+        });
+        return view;
+    }
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(
-                R.layout.fragment_one, container, false);
+    private void setCustomEvent(OnCustomListenner onCustomListenner) {
+        this.onCustomListenner = onCustomListenner;
+        onCustomListenner.onEvent();
     }
 
     @Override

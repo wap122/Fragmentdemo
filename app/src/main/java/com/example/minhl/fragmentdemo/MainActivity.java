@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnCustomListenner{
     Fragment fr;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void deleteFragment(View view) {
         getFragmentManager().beginTransaction().remove(fr).commit();
+    }
+
+    @Override
+    public void onEvent() {
+        finish();
     }
 }
